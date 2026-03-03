@@ -20,14 +20,14 @@ class _GameOneScreenState extends State<GameOneScreen> {
   }
 
   Future<void> _initGame() async {
-    final prefs         = await SharedPreferences.getInstance();
-    final idPersonaje   = prefs.getInt('personaje_id') ?? 1;
-    final spriteCatcher = prefs.getString('personaje_sprite_catcher')
-        ?? 'character.png';
+    final prefs = await SharedPreferences.getInstance();
+    final idPersonaje = prefs.getInt('personaje_id') ?? 1;
+    final spriteCatcher =
+        prefs.getString('personaje_sprite_catcher') ?? 'vianne_catcher.png';
 
     setState(() {
       _game = CatcherGame(
-        idPersonaje:   idPersonaje,
+        idPersonaje: idPersonaje,
         spriteCatcher: spriteCatcher,
       );
     });
@@ -74,7 +74,7 @@ class _GameOneScreenState extends State<GameOneScreen> {
                         fontWeight: FontWeight.w900,
                         color: Colors.white,
                         shadows: [
-                          Shadow(offset: Offset(2, 2), color: Colors.black54)
+                          Shadow(offset: Offset(2, 2), color: Colors.black54),
                         ],
                       ),
                     ),
@@ -97,16 +97,20 @@ class _GameOneScreenState extends State<GameOneScreen> {
                       right: 8,
                       child: GestureDetector(
                         onTap: () => Navigator.pop(context),
-                        child:
-                            Image.asset('assets/images/house.png', height: 50),
+                        child: Image.asset(
+                          'assets/images/house.png',
+                          height: 50,
+                        ),
                       ),
                     ),
                     Center(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Image.asset('assets/images/emoji_cry.png',
-                              height: 130),
+                          Image.asset(
+                            'assets/images/emoji_cry.png',
+                            height: 130,
+                          ),
                           const SizedBox(height: 32),
                           const Text(
                             'GAME OVER',
@@ -133,8 +137,10 @@ class _GameOneScreenState extends State<GameOneScreen> {
                           const SizedBox(height: 44),
                           GestureDetector(
                             onTap: () => _game!.resetGame(),
-                            child: Image.asset('assets/images/retry.png',
-                                height: 80),
+                            child: Image.asset(
+                              'assets/images/retry.png',
+                              height: 80,
+                            ),
                           ),
                         ],
                       ),
